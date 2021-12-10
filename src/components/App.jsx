@@ -17,10 +17,13 @@ const BoxTwo = styled.div`
   height: 100px;
 `;
 
+const Text = styled.span``;
+
 export default function App() {
   return (
     <Father>
       <BoxOne />
+      <Text>Hello</Text>
       <BoxTwo />
     </Father>
   );
