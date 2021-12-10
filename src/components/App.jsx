@@ -10,13 +10,14 @@ const Btn = styled.button`
   border:0;
   border-radius:15px;
 `
-
+const Input = styled.input`
+  background-color:tomato;
+`;
 
 export default function App() {
   return (
     <Father>
-      <Btn>Log in</Btn>
-      <Btn as="a" href="/">Log in</Btn>
+      <Input />
     </Father>
   );
 }
