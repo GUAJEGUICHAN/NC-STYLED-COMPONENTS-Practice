@@ -17,7 +17,9 @@ const BoxTwo = styled.div`
   height: 100px;
 `;
 
-const Text = styled.span``;
+const Text = styled.span`
+ color: white;
+`;
 
 export default function App() {
   return (
