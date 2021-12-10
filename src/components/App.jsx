@@ -6,7 +6,7 @@ const Father = styled.div`
 `;
 
 const Box = styled.div`
-  background-color: ${props => props.bgColor};
+  background-color: ${(props) => props.bgColor};
   width: 100px;
   height: 100px;
 `;
@@ -17,6 +17,13 @@ const BoxTwo = styled.div`
   height: 100px;
 `;
 
+const Circle = styled.div`
+  background-color:${(props) => props.bgColor};
+  width:100px;
+  height:100px;
+  border-radius:50px;
+`;
+
 const Text = styled.span`
  color: white;
 `;
@@ -24,8 +31,8 @@ const Text = styled.span`
 export default function App() {
   return (
     <Father>
-      <Box bgColor="teal" />
-      <Box bgColor="tomato" />
+      <Circle bgColor="teal" />
+      <Circle bgColor="tomato" />
     </Father>
   );
 }
