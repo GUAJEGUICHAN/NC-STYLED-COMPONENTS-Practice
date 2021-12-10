@@ -6,12 +6,16 @@ const Wrapper = styled.div`
 `;
 
 const animation = keyframes`
-  from{
+  0%{
     transform:rotate(0deg);
     border-radius:0px;
-  }to{
-    transform:rotate(360deg);
+  }50%{
+    transform:rotate(180deg);
     border-radius:100px
+  }
+  100%{
+    transform:rotate(360deg);
+    border-radius:0px;
   }
 `
 
