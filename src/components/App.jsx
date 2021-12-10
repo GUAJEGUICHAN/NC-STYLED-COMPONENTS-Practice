@@ -6,7 +6,7 @@ const Father = styled.div`
 `;
 
 const Box = styled.div`
-  background-color: teal;
+  background-color: ${props => props.bgColor};
   width: 100px;
   height: 100px;
 `;
@@ -24,8 +24,8 @@ const Text = styled.span`
 export default function App() {
   return (
     <Father>
-      <Box />
-      <Box />
+      <Box bgColor="teal" />
+      <Box bgColor="tomato" />
     </Father>
   );
 }
