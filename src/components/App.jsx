@@ -5,7 +5,7 @@ const Father = styled.div`
   display: flex;
 `;
 
-const BoxOne = styled.div`
+const Box = styled.div`
   background-color: teal;
   width: 100px;
   height: 100px;
@@ -24,9 +24,8 @@ const Text = styled.span`
 export default function App() {
   return (
     <Father>
-      <BoxOne />
-      <Text>Hello</Text>
-      <BoxTwo />
+      <Box />
+      <Box />
     </Father>
   );
 }
