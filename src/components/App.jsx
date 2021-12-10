@@ -17,10 +17,7 @@ const BoxTwo = styled.div`
   height: 100px;
 `;
 
-const Circle = styled.div`
-  background-color:${(props) => props.bgColor};
-  width:100px;
-  height:100px;
+const Circle = styled(Box)`
   border-radius:50px;
 `;
 
