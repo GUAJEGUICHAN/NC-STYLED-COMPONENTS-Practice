@@ -10,13 +10,22 @@ const Btn = styled.button`
   border:0;
   border-radius:15px;
 `
-const Input = styled.input`
+const Input = styled.input.attr({ required: true })`
   background-color:tomato;
 `;
 
 export default function App() {
   return (
     <Father>
+      <Input />
+      <Input />
+      <Input />
+      <Input />
+      <Input />
+      <Input />
+      <Input />
+      <Input />
+      <Input />
       <Input />
     </Father>
   );
