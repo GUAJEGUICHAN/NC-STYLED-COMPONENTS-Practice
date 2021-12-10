@@ -8,8 +8,10 @@ const Wrapper = styled.div`
 const animation = keyframes`
   from{
     transform:rotate(0deg);
+    border-radius:0px;
   }to{
     transform:rotate(360deg);
+    border-radius:100px
   }
 `
 
