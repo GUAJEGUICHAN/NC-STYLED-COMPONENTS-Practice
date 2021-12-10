@@ -16,6 +16,7 @@ export default function App() {
   return (
     <Father>
       <Btn>Log in</Btn>
+      <Btn as="a" href="/">Log in</Btn>
     </Father>
   );
 }
