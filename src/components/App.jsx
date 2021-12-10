@@ -10,7 +10,7 @@ const Btn = styled.button`
   border:0;
   border-radius:15px;
 `
-const Input = styled.input.attr({ required: true })`
+const Input = styled.input.attr({ required: true, minlength: 10 })`
   background-color:tomato;
 `;
 
