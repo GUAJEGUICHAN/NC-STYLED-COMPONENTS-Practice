@@ -22,5 +22,6 @@ module.exports = {
       namedComponents: 'function-declaration',
       unnamedComponents: 'arrow-function',
     }],
+    "react/jsx-filename-extension": "off"
   },
 };
