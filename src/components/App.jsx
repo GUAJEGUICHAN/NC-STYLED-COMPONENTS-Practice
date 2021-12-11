@@ -23,18 +23,25 @@ const Box = styled.div`
   height:200px;
   width:200px;
   background-color: tomato;
-  animation:${animation} 1s linear infinite
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  animation:${animation} 1s linear infinite;
+  span{
+    font-size:80px;
+  }
 `;
 
 export default function App() {
   return (
     <Wrapper>
+      <Box>
+        <span>😁</span>
+      </Box>
       <Box />
       <Box />
       <Box />
       <Box />
-      <Box />
-      <div>왜 안될까?</div>
     </Wrapper>
   );
 }
