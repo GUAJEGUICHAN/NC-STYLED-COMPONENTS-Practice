@@ -6,7 +6,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx)?$/,
+        test: /\.(ts|tsx)?$/,
         exclude: /node_modules/,
         use: 'babel-loader',
       },
@@ -16,10 +16,10 @@ module.exports = {
     alias: {
       components: path.resolve(__dirname, 'src/components'),
     },
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js', '.jsx', '.ts', 'tsx'],
   },
   mode: 'none',
-  entry: './src/index.jsx',
+  entry: './src/index.tsx',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
