@@ -19,6 +19,10 @@ const animation = keyframes`
   }
 `
 
+const Emoji = styled.span`
+    font-size:48px
+`;
+
 const Box = styled.div`
   height:200px;
   width:200px;
@@ -27,10 +31,9 @@ const Box = styled.div`
   justify-content:center;
   align-items:center;
   animation:${animation} 1s linear infinite;
-  span{
-    font-size:80px;
+  ${Emoji}{
     &:hover{
-      font-size:40px;
+      font-size:98px;
     }
     &:active{
       opacity:0;
@@ -42,7 +45,7 @@ export default function App() {
   return (
     <Wrapper>
       <Box>
-        <span>😁</span>
+        <Emoji>😁</Emoji>
       </Box>
       <Box />
       <Box />
