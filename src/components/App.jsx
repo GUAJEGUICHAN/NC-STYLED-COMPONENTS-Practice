@@ -29,6 +29,9 @@ const Box = styled.div`
   animation:${animation} 1s linear infinite;
   span{
     font-size:80px;
+    &:hover{
+      font-size:40px;
+    }
   }
 `;
 
