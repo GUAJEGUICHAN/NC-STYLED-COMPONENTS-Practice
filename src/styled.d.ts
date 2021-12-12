@@ -3,12 +3,8 @@ import 'styled-components';
 
 // and extend them!
 declare module 'styled-components' {
-  export interface DefaultTheme {//theme에 어떤 속성이 있는지 알려준다. 
-    borderRadius: string;
-
-    colors: {
-      main: string;
-      secondary: string;
-    };
+  export interface DefaultTheme {//이것이 우리가 사용할 테마이다. 
+    textColor: string;
+    bgColor: string;
   }
 }
