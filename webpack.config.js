@@ -8,7 +8,7 @@ module.exports = {
       {
         test: /\.(ts|tsx)?$/,
         exclude: /node_modules/,
-        use: 'babel-loader',
+        use: 'ts-loader',
       },
     ],
   },
@@ -16,7 +16,7 @@ module.exports = {
     alias: {
       components: path.resolve(__dirname, 'src/components'),
     },
-    extensions: ['.js', '.jsx', '.ts', 'tsx'],
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
   },
   mode: 'none',
   entry: './src/index.tsx',
