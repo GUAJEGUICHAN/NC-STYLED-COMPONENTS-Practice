@@ -12,15 +12,21 @@ export default function App() {
     } = event;
     setValue(value)
   }
+
+  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    console.log("hello", value)
+  }
   return (
     <div>
-      <form action="">
+      <form onSubmit={onSubmit}>
         <input
           value={value}
           onChange={onChange}
           type="text"
           placeholder='username'
         />
+        <button>Log in</button>
       </form>
     </div>
   );
