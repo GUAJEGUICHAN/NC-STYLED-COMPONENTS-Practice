@@ -20,7 +20,7 @@ interface CircleProps {
   text?: string
 }
 
-export default function Circle({ bgColor, borderColor, text }: CircleProps) {
+export default function Circle({ bgColor, borderColor, text = "default text" }: CircleProps) {
   return <Container bgColor={bgColor} borderColor={borderColor ?? "red"} >
     {text}
   </Container>;
