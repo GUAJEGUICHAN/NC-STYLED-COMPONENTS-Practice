@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
 import { ThemeProvider } from 'styled-components';
+
 import App from './components/App';
+import { lightTheme2 } from './theme';
 
 const darkTheme = {
   textColor: 'whitesmoke',
@@ -15,7 +16,7 @@ const lightTheme = {
 };
 
 ReactDOM.render(
-  <ThemeProvider theme={lightTheme}>
+  <ThemeProvider theme={lightTheme2}>
     <App />
   </ThemeProvider>,
 
