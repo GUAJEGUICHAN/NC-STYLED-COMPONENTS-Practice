@@ -3,11 +3,11 @@ import ReactDOM from 'react-dom';
 import { ThemeProvider } from 'styled-components';
 
 import App from './components/App';
-import { darkTheme } from './theme';
+import { lightTheme } from './theme';
 
 
 ReactDOM.render(
-  <ThemeProvider theme={darkTheme}>
+  <ThemeProvider theme={lightTheme}>
     <App />
   </ThemeProvider>,
 
