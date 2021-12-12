@@ -9,6 +9,7 @@ const Container = styled.div<ContainerProps>`
   background-color: ${(props) => props.bgColor};
   width: 100px;
   height: 100px;
+  border-radius:50px;
 `;
 
 interface CircleProps {
