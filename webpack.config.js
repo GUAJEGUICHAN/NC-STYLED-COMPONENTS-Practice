@@ -29,6 +29,7 @@ module.exports = {
       directory: path.join(__dirname, 'public'),
     },
     historyApiFallback: { index: "/", disableDotRule: true },
+    hot: true,
     compress: true,
     port: 9000,
   },
