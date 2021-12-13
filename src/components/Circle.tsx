@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 
-interface ContainerProps {
+type ContainerProps = {
   bgColor: string;
   borderColor: string;
 }

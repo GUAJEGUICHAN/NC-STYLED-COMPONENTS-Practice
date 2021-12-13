@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import styled from 'styled-components';
+import Router from '../Router';
 import Circle from './Circle';
 
 const Container = styled.div`
@@ -12,8 +13,9 @@ const H1 = styled.h1`
 
 export default function App() {
   return (
-    <Container>
-      <H1>protected!</H1>
-    </Container>
+    <div>
+      <Router />
+    </div>
+
   );
 }
