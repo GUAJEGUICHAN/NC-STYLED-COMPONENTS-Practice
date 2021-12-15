@@ -24,9 +24,19 @@ const CoinsList = styled.ul`
 const Coin = styled.li`
     background:white;
     margin-bottom:10px;
-    padding:20px;
     color:${(props) => props.theme.bgColor};
     border-radius:20px;
+    a{
+      transition: color 0.2s ease-in;
+      display:block;
+      padding:20px;
+
+    }
+    &:hover{
+      a{
+        color:${props => props.theme.accentColor}
+      }
+    }
 
 `;
 
@@ -71,7 +81,10 @@ export default function Coins() {
       </Header>
       <CoinsList>
         {coins.map(coin =>
-          <Coin key={coin.id}><Link to={`/${coin.id}`}>{coin.name} &rarr;</Link > </Coin>
+          <Coin key={coin.id}>
+            <Link to={`/${coin.id}`}>{coin.name} &rarr;
+            </Link >
+          </Coin>
         )}
       </CoinsList>
     </Container >
