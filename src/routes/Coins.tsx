@@ -88,7 +88,9 @@ export default function Coins() {
   const [coin, setCoin] = useState<CoinInterface>()
   useEffect(() => {
     (async () => {
-      await fetch("https://api.coinpaprika.com/v1/coins")
+      const request = await fetch("https://api.coinpaprika.com/v1/coins")
+      const json = await request.json();
+      console.log(json);
     })();
   }, [])
   return (
