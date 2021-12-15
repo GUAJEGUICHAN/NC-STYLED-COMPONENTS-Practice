@@ -9,6 +9,8 @@ const Title = styled.h1`
 
 const Container = styled.div`
   padding : 0 20px;
+  max-width: 480;
+  margin:0 auto;
 `;
 
 const Header = styled.header`
