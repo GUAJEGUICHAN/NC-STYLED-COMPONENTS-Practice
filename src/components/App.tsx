@@ -16,6 +16,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
     background:${(props) => props.theme.bgColor};
     color:${(props) => props.theme.textColor}
+
   }
   a{
     text-decoration:none;
