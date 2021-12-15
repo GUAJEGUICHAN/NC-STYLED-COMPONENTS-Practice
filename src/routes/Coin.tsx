@@ -1,9 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 import { useParams } from "react-router-dom";
+const Title = styled.h1`
+  colors:${(props) => props.theme.accentColor}
+`;
 
+const Container = styled.div`
+  padding : 0 20px;
+  max-width: 480;
+  margin:0 auto;
+`;
 
+const Header = styled.header`
+    height:10vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+`;
+
+const Loader = styled.span`
+  text-align:center;
+  display:block;
+`;
 
 type RouteParams = {
   coinId: string
@@ -11,5 +30,17 @@ type RouteParams = {
 
 export default function Coin() {
   const { coinId } = useParams<RouteParams>();
-  return <div>{coinId}</div>
+  const [loading, setLoading] = useState(true);
+  return (
+    <Container>
+      <Header>
+        <Title>코인 : {coinId} </Title>
+      </Header>
+      {loading ?
+        <Loader>"Loading..."</Loader> :
+        <div > {coinId}</div>
+      }
+    </Container>
+
+  )
 }
