@@ -48,6 +48,11 @@ const Loader = styled.span`
   display:block;
 `;
 
+const CoinImage = styled.img`
+  width: 25px;
+  height:25px;
+`;
+
 type RouterParams = {
   coinId: string;
 }
@@ -111,7 +116,10 @@ export default function Coins() {
         <CoinsList>
           {coins.map(coin =>
             <Coin key={coin.id}>
-              <Link to={`/${coin.id}`}>{coin.name} &rarr;
+              <Link to={`/${coin.id}`}>
+                <CoinImage src={`https://cryptoicon-api.vercel.app/api/icon/
+${coin.symbol.toLowerCase()}`} />
+                {coin.name} &rarr;
               </Link >
             </Coin>
           )}
