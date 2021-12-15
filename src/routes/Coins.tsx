@@ -8,17 +8,26 @@ const Title = styled.h1`
 `;
 
 const Container = styled.div`
-  
+  padding : 0 20px;
 `;
 
 const Header = styled.header`
-
+    height:10vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 `;
 
 const CoinsList = styled.ul`
 `;
 
 const Coin = styled.li`
+    background:white;
+    margin-bottom:10px;
+    padding:20px;
+    color:${(props) => props.theme.bgColor};
+    border-radius:20px;
+
 `;
 
 type RouterParams = {
@@ -61,7 +70,9 @@ export default function Coins() {
         <Title>코인</Title>
       </Header>
       <CoinsList>
-        {coins.map(coin => <Coin key={coin.id}>{coin.name}</Coin>)}
+        {coins.map(coin =>
+          <Coin key={coin.id}>{coin.name} &rarr; </Coin>
+        )}
       </CoinsList>
     </Container>
   )
