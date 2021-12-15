@@ -43,6 +43,11 @@ const Coin = styled.li`
 
 `;
 
+const Loader = styled.span`
+  text-align:center;
+  display:block;
+`;
+
 type RouterParams = {
   coinId: string;
 }
@@ -87,11 +92,13 @@ type CoinInterface = {
 
 export default function Coins() {
   const [coins, setCoins] = useState<CoinInterface[]>([])
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     (async () => {
       const request = await fetch("https://api.coinpaprika.com/v1/coins")
       const json = await request.json();
       setCoins(json.slice(0, 100))
+      setLoading(false)
     })();
   }, [])
   return (
@@ -99,14 +106,16 @@ export default function Coins() {
       <Header>
         <Title>코인</Title>
       </Header>
-      <CoinsList>
-        {coins.map(coin =>
-          <Coin key={coin.id}>
-            <Link to={`/${coin.id}`}>{coin.name} &rarr;
-            </Link >
-          </Coin>
-        )}
-      </CoinsList>
+      {loading ?
+        <Loader>"Loading..."</Loader> :
+        <CoinsList>
+          {coins.map(coin =>
+            <Coin key={coin.id}>
+              <Link to={`/${coin.id}`}>{coin.name} &rarr;
+              </Link >
+            </Coin>
+          )}
+        </CoinsList>}
     </Container >
   )
 }
