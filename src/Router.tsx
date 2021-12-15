@@ -1,9 +1,10 @@
-import React from "react"
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
+import React from 'react';
+import {
+  BrowserRouter, Routes, Route, Link,
+} from 'react-router-dom';
 
-import Coins from "./routes/Coins"
-import Coin from "./routes/Coin"
-
+import Coins from './routes/Coins';
+import Coin from './routes/Coin';
 
 export default function Router() {
   return (
@@ -13,8 +14,8 @@ export default function Router() {
       <Routes>
         <Route path="/" element={<div>Home</div>} />
         <Route path="/coins" element={<Coins />} />
-        <Route path="/:coinId" element={<Coin />}></Route>
+        <Route path="/:coinId" element={<Coin />} />
       </Routes>
-    </BrowserRouter>)
-
+    </BrowserRouter>
+  );
 }

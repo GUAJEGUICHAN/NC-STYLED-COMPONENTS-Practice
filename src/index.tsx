@@ -5,7 +5,6 @@ import { ThemeProvider } from 'styled-components';
 import App from './components/App';
 import { lightTheme } from './theme';
 
-
 ReactDOM.render(
   <ThemeProvider theme={lightTheme}>
     <App />
