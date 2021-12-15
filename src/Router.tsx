@@ -12,7 +12,7 @@ export default function Router() {
       <Link to="/123">코인방으로</Link>
       <Routes>
         <Route path="/" element={<div>Home</div>} />
-        <Route path="/:coinId" element={<Coin />} />
+        <Route path="/:coinId" element={<Coins />} />
       </Routes>
     </BrowserRouter>)
 
