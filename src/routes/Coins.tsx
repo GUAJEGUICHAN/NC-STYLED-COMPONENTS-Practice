@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
 
@@ -74,8 +74,18 @@ const coins = [{
   type: "token",
 },]
 
-export default function Coins() {
+type CoinInterface = {
+  id: string,
+  name: string,
+  symbol: string,
+  rank: number,
+  is_new: boolean,
+  is_active: boolean,
+  type: string
+}
 
+export default function Coins() {
+  const [coin, setCoin] = useState<CoinInterface>()
   return (
     <Container>
       <Header>
