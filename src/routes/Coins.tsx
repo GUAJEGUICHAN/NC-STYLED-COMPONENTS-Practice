@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
 
@@ -86,6 +86,11 @@ type CoinInterface = {
 
 export default function Coins() {
   const [coin, setCoin] = useState<CoinInterface>()
+  useEffect(() => {
+    (async () => {
+      await fetch("https://api.coinpaprika.com/v1/coins")
+    })();
+  }, [])
   return (
     <Container>
       <Header>
