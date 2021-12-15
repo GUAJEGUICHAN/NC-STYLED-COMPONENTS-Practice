@@ -30,9 +30,11 @@ const Coin = styled.li`
     color:${(props) => props.theme.bgColor};
     border-radius:20px;
     a{
+      display:flex;
       transition: color 0.2s ease-in;
-      display:block;
       padding:20px;
+      align-items:center;
+
 
     }
     &:hover{
@@ -49,9 +51,16 @@ const Loader = styled.span`
 `;
 
 const CoinImage = styled.img`
-  width: 25px;
-  height:25px;
+  width: 35px;
+  height:35px;
+  margin-right:10px;
 `;
+
+const CoinWrapper = styled.div`
+  display:flex;
+  align-items:center;
+  gap:10px;
+`
 
 type RouterParams = {
   coinId: string;
