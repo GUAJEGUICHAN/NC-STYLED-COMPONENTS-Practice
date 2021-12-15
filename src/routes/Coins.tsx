@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
 
 
@@ -71,9 +71,9 @@ export default function Coins() {
       </Header>
       <CoinsList>
         {coins.map(coin =>
-          <Coin key={coin.id}>{coin.name} &rarr; </Coin>
+          <Coin key={coin.id}><Link to={`/${coin.id}`}>{coin.name} &rarr;</Link > </Coin>
         )}
       </CoinsList>
-    </Container>
+    </Container >
   )
 }
