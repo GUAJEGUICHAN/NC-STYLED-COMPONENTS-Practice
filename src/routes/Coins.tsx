@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import { json } from "stream/consumers";
 import styled from "styled-components";
 
 
@@ -90,6 +91,7 @@ export default function Coins() {
     (async () => {
       const request = await fetch("https://api.coinpaprika.com/v1/coins")
       const json = await request.json();
+      setCoins(json.slice(0, 100))
     })();
   }, [])
   return (
