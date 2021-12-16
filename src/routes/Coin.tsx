@@ -31,17 +31,24 @@ const Overview = styled.div`
   padding:20px;
   justify-content:space-between;
   margin-bottom:10px;
-  border-radius:20px
-
+  border-radius:20px;
 `;
 
 const OverviewItems = styled.div`
   display:flex;
   flex-direction:column;
-
   align-items:center;
   justify-content:space-around;
+  span:first-child {
+    font-size:12px;
+    font-weight:400;
+
+  }
 `;
+const Describe = styled.div`
+  background:"";
+  padding: 10px;
+  `
 
 type RouteParams = {
   coinId: string;
@@ -154,11 +161,11 @@ export default function Coin() {
               <span>{info?.open_source ? "YES" : "NO"}</span>
             </OverviewItems>
           </Overview>
-          <Overview>
-            <OverviewItems>
-              <span>{info?.description}</span>
-            </OverviewItems>
-          </Overview>
+
+          <Describe>
+            <span>{info?.description}</span>
+          </Describe>
+
           <Overview>
             <OverviewItems>
               <span>TOTAL SUPPlY:</span>
