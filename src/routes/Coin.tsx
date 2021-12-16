@@ -28,11 +28,21 @@ type RouteParams = {
   coinId: string;
 }
 
+type NameState = {
+  name: string;
+}
+type RouterState = {
+  state: {
+    name: string,
+    rank: string
+  }
+}
+
 export default function Coin() {
   const { coinId } = useParams<RouteParams>();
   const [loading, setLoading] = useState(true);
-  const location = useLocation()
-  console.log(location);
+  const { state } = useLocation() as RouterState;
+  console.log(state.name);
   return (
     <Container>
       <Header>
