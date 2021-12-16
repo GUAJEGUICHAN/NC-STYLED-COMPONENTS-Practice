@@ -24,6 +24,25 @@ const Loader = styled.span`
   display:block;
 `;
 
+const Overview = styled.div`
+  background: #252732;
+  display:flex;
+  height:40px;
+  padding:20px;
+  justify-content:space-between;
+  margin-bottom:10px;
+  border-radius:20px
+
+`;
+
+const OverviewItems = styled.div`
+  display:flex;
+  flex-direction:column;
+
+  align-items:center;
+  justify-content:space-around;
+`;
+
 type RouteParams = {
   coinId: string;
 }
@@ -71,7 +90,7 @@ type PriceData = {
   last_updated: string;
   quotes: {
     USD: {
-      ath_date: string
+      ath_date: string;
       ath_price: number;
       market_cap: number;
       market_cap_change_24h: number;
@@ -108,6 +127,7 @@ export default function Coin() {
       console.log(priceData)
       setInfo(infoData);
       setPriceInfo(priceData);
+      setLoading(false);
     })();
     return () => {
     }
@@ -119,7 +139,37 @@ export default function Coin() {
       </Header>
       {loading ?
         <Loader>"Loading..."</Loader> :
-        <div > {coinId}</div>
+        <>
+          <Overview>
+            <OverviewItems>
+              <span>RANK:</span>
+              <span>{info?.rank}</span>
+            </OverviewItems>
+            <OverviewItems>
+              <span>SYMBOL:</span>
+              <span>{priceInfo?.symbol}</span>
+            </OverviewItems>
+            <OverviewItems>
+              <span>OPEN SOURCE</span>
+              <span>{info?.open_source ? "YES" : "NO"}</span>
+            </OverviewItems>
+          </Overview>
+          <Overview>
+            <OverviewItems>
+              <span>{info?.description}</span>
+            </OverviewItems>
+          </Overview>
+          <Overview>
+            <OverviewItems>
+              <span>TOTAL SUPPlY:</span>
+              <span>{priceInfo?.total_supply}</span>
+            </OverviewItems>
+            <OverviewItems>
+              <span>MAX SUPPLY:</span>
+              <span>{priceInfo?.max_supply}</span>
+            </OverviewItems>
+          </Overview>
+        </>
       }
     </Container>
   )
