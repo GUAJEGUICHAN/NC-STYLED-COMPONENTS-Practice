@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
-import { useLocation, useParams } from "react-router-dom";
+import { Outlet, useLocation, useParams } from "react-router-dom";
 const Title = styled.h1`
   colors:${(props) => props.theme.accentColor}
 `;
@@ -176,8 +176,11 @@ export default function Coin() {
               <span>{priceInfo?.max_supply}</span>
             </OverviewItems>
           </Overview>
+          <Outlet />
+
         </>
       }
+      <Outlet />
     </Container>
   )
 }

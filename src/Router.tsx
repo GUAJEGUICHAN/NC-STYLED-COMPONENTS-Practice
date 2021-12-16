@@ -5,6 +5,8 @@ import {
 
 import Coins from './routes/Coins';
 import Coin from './routes/Coin';
+import Chart from './routes/Chart';
+import Price from './routes/Price';
 
 export default function Router() {
   return (
@@ -14,7 +16,10 @@ export default function Router() {
       <Routes>
         <Route path="/" element={<div>Home</div>} />
         <Route path="/coins" element={<Coins />} />
-        <Route path="/:coinId" element={<Coin />} />
+        <Route path="/:coinId/*" element={<Coin />}>
+          <Route path="chart" element={<Chart />} />
+          <Route path="price" element={<Price />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );
