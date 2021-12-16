@@ -42,17 +42,15 @@ export default function Coin() {
   const { coinId } = useParams<RouteParams>();
   const [loading, setLoading] = useState(true);
   const { state } = useLocation() as RouterState;
-  console.log(state.name);
   return (
     <Container>
       <Header>
-        <Title>코인 : {coinId} </Title>
+        <Title>{state?.name || "Loading..."} </Title>
       </Header>
       {loading ?
         <Loader>"Loading..."</Loader> :
         <div > {coinId}</div>
       }
     </Container>
-
   )
 }
