@@ -125,7 +125,13 @@ export default function Coins() {
         <CoinsList>
           {coins.map(coin =>
             <Coin key={coin.id}>
-              <Link to={`/${coin.id}`}>
+              <Link
+                to={`/${coin.id}`}
+                state={{
+                  name: coin.name,
+                  rank: coin.rank
+                }}
+              >
                 <CoinImage src={`https://cryptoicon-api.vercel.app/api/icon/
 ${coin.symbol.toLowerCase()}`} />
                 {coin.name} &rarr;

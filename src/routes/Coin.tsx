@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 const Title = styled.h1`
   colors:${(props) => props.theme.accentColor}
 `;
@@ -25,12 +25,14 @@ const Loader = styled.span`
 `;
 
 type RouteParams = {
-  coinId: string
+  coinId: string;
 }
 
 export default function Coin() {
   const { coinId } = useParams<RouteParams>();
   const [loading, setLoading] = useState(true);
+  const location = useLocation()
+  console.log(location);
   return (
     <Container>
       <Header>
