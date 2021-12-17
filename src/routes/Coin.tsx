@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import { Link, Outlet, useLocation, useParams, useMatch } from "react-router-dom";
 import { useQuery } from "react-query";
-import { fetchCoins, fetchInfoData, fetchPriceData } from "./api";
+import { fetchInfoData, fetchPriceData } from "./api";
 const Title = styled.h1`
   colors:${(props) => props.theme.accentColor}
 `;
@@ -154,7 +154,7 @@ export default function Coin() {
   const priceMatch = useMatch("/:coinId/price");
   const chartMatch = useMatch("/:coinId/chart");
   const { isLoading: infoLoading, data: infoData } = useQuery<InfoData>([coinId, "infoData"], () => fetchInfoData(coinId));
-  const { isLoading: priceLoading, data: priceData } = useQuery<PriceData>([coinId, "priceData"], () => fetchPriceData(coinId))
+  const { isLoading: priceLoading, data: priceData } = useQuery<PriceData>([coinId, "priceData"], () => fetchPriceData(coinId));
 
   return (
     <Container>
@@ -203,7 +203,7 @@ export default function Coin() {
           </Tabs>
         </>
       }
-      <Outlet />
+      <Outlet context={{ coinId }} />
     </Container >
   )
 }
