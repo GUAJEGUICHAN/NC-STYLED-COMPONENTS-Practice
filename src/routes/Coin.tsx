@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
-import { Link, Outlet, useLocation, useParams } from "react-router-dom";
+import { Link, Outlet, useLocation, useParams, useMatch } from "react-router-dom";
 const Title = styled.h1`
   colors:${(props) => props.theme.accentColor}
 `;
@@ -56,11 +56,12 @@ const Tabs = styled.div`
   grid-template-columns: repeat(2,1fr);
   gap:10px;
 `;
-const Tab = styled.span`
+const Tab = styled.span<{ isActive: boolean }>`
   font-size:20px;
   height:40px;
   background:#252732;
   border-radius:15px;
+  color:${props => props.isActive ? props.theme.accentColor : props.theme.textColor};
   a{
     display:block;
     text-align:center;
@@ -152,6 +153,8 @@ export default function Coin() {
 
   const [info, setInfo] = useState<InfoData>();
   const [priceInfo, setPriceInfo] = useState<PriceData>();
+  const priceMatch = useMatch("/:coinId/price");
+  const chartMatch = useMatch("/:coinId/chart");
 
   useEffect(() => {
     (async () => {
@@ -204,10 +207,10 @@ export default function Coin() {
             </OverviewItems>
           </Overview>
           <Tabs>
-            <Tab>
+            <Tab isActive={chartMatch !== null}>
               <Link to={`/${coinId}/chart`}>Chart</Link>
             </Tab>
-            <Tab>
+            <Tab isActive={priceMatch !== null}>
               <Link to={`/${coinId}/price`}>Price</Link>
             </Tab>
           </Tabs>
