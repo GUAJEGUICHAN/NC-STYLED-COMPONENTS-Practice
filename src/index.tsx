@@ -13,8 +13,6 @@ ReactDOM.render(
     <ThemeProvider theme={lightTheme}>
       <App />
     </ThemeProvider>
-  </QueryClientProvider>
-  ,
-
+  </QueryClientProvider>,
   document.getElementById('app'),
 );
