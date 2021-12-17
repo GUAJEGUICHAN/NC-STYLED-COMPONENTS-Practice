@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styled from "styled-components";
 
 import { Link, Outlet, useLocation, useParams, useMatch } from "react-router-dom";
@@ -148,27 +148,10 @@ type PriceData = {
 
 export default function Coin() {
   const { coinId } = useParams<RouteParams>();
-  const [loading, setLoading] = useState(true);
   const { state } = useLocation() as RouterState;
-
-  const [info, setInfo] = useState<InfoData>();
-  const [priceInfo, setPriceInfo] = useState<PriceData>();
   const priceMatch = useMatch("/:coinId/price");
   const chartMatch = useMatch("/:coinId/chart");
 
-  useEffect(() => {
-    (async () => {
-      const infoData = await (await fetch(`https://api.coinpaprika.com/v1/coins/${coinId}`)).json()
-      console.log(infoData)
-      const priceData = await (await fetch(`https://api.coinpaprika.com/v1/tickers/${coinId}`)).json()
-      console.log(priceData)
-      setInfo(infoData);
-      setPriceInfo(priceData);
-      setLoading(false);
-    })();
-    return () => {
-    }
-  }, [])
   return (
     <Container>
       <Header>
