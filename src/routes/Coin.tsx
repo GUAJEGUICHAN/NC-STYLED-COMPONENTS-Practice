@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 
 import { Link, Outlet, useLocation, useParams, useMatch } from "react-router-dom";
+import { useQuery } from "react-query";
+import { fetchCoins, fetchInfoData, fetchPriceData } from "./api";
 const Title = styled.h1`
   colors:${(props) => props.theme.accentColor}
 `;
@@ -151,42 +153,44 @@ export default function Coin() {
   const { state } = useLocation() as RouterState;
   const priceMatch = useMatch("/:coinId/price");
   const chartMatch = useMatch("/:coinId/chart");
+  const { isLoading: infoLoading, data: infoData } = useQuery<InfoData>([coinId, "infoData"], () => fetchInfoData(coinId));
+  const { isLoading: priceLoading, data: priceData } = useQuery<PriceData>([coinId, "priceData"], () => fetchPriceData(coinId))
 
   return (
     <Container>
       <Header>
-        <Title>{state?.name || "Loading..."} </Title>
+        <Title>{state?.name || (infoData?.name || "Loading...")} </Title>
       </Header>
-      {loading ?
+      {infoLoading ?
         <Loader>"Loading..."</Loader> :
         <>
           <Overview>
             <OverviewItems>
               <span>RANK:</span>
-              <span>{info?.rank}</span>
+              <span>{infoData?.rank}</span>
             </OverviewItems>
             <OverviewItems>
               <span>SYMBOL:</span>
-              <span>{priceInfo?.symbol}</span>
+              <span>{priceData?.symbol}</span>
             </OverviewItems>
             <OverviewItems>
               <span>OPEN SOURCE</span>
-              <span>{info?.open_source ? "YES" : "NO"}</span>
+              <span>{infoData?.open_source ? "YES" : "NO"}</span>
             </OverviewItems>
           </Overview>
 
           <Describe>
-            <span>{info?.description}</span>
+            <span>{infoData?.description}</span>
           </Describe>
 
           <Overview>
             <OverviewItems>
               <span>TOTAL SUPPlY:</span>
-              <span>{priceInfo?.total_supply}</span>
+              <span>{priceData?.total_supply}</span>
             </OverviewItems>
             <OverviewItems>
               <span>MAX SUPPLY:</span>
-              <span>{priceInfo?.max_supply}</span>
+              <span>{priceData?.max_supply}</span>
             </OverviewItems>
           </Overview>
           <Tabs>
@@ -199,7 +203,6 @@ export default function Coin() {
           </Tabs>
         </>
       }
-
       <Outlet />
     </Container >
   )
