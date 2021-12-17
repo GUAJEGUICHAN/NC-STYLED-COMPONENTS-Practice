@@ -8,21 +8,22 @@ const Title = styled.h1`
 
 const Container = styled.div`
   padding : 0 20px;
-  max-width: 480;
+  max-width: 480px;
   margin:0 auto;
 `;
 
 const Header = styled.header`
-    height:10vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
+  height:10vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
 `;
 
 const Loader = styled.span`
   text-align:center;
   display:block;
 `;
+
 
 const Overview = styled.div`
   background: #252732;
@@ -48,7 +49,33 @@ const OverviewItems = styled.div`
 const Describe = styled.div`
   background:"";
   padding: 10px;
-  `
+`;
+
+const Tabs = styled.div`
+  display:grid;
+  grid-template-columns: repeat(2,1fr);
+  gap:10px;
+`;
+const Tab = styled.span`
+  font-size:20px;
+  height:40px;
+  background:#252732;
+  border-radius:15px;
+  a{
+    display:block;
+    text-align:center;
+    box-sizing:border-box;
+    height:100%;
+    padding:10px;
+    transition: color 0.2s ease-in;   
+  }
+
+  &:hover{
+    a{
+      color:${props => props.theme.accentColor}
+    }
+  }
+`;
 
 type RouteParams = {
   coinId: string;
@@ -176,8 +203,14 @@ export default function Coin() {
               <span>{priceInfo?.max_supply}</span>
             </OverviewItems>
           </Overview>
-          <Link to={`/${coinId}/chart`}>Chart</Link>
-          <Link to={`/${coinId}/price`}>Price</Link>
+          <Tabs>
+            <Tab>
+              <Link to={`/${coinId}/chart`}>Chart</Link>
+            </Tab>
+            <Tab>
+              <Link to={`/${coinId}/price`}>Price</Link>
+            </Tab>
+          </Tabs>
         </>
       }
 

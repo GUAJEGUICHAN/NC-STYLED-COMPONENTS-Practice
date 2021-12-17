@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { json } from "stream/consumers";
 import styled from "styled-components";
 
 
@@ -10,7 +9,7 @@ const Title = styled.h1`
 
 const Container = styled.div`
   padding : 0 20px;
-  max-width: 480;
+  max-width: 480px;
   margin:0 auto;
 `;
 
@@ -34,8 +33,6 @@ const Coin = styled.li`
       transition: color 0.2s ease-in;
       padding:20px;
       align-items:center;
-
-
     }
     &:hover{
       a{
