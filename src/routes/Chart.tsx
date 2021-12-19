@@ -2,6 +2,7 @@ import React from 'react';
 import { useQuery } from 'react-query';
 import { useOutletContext } from 'react-router-dom';
 import { fetchHistory } from './api';
+import ApexChart from 'react-apexcharts'
 
 type IHistorical = {
   close: number;
@@ -23,9 +24,24 @@ function Chart() {
   console.log(coinId)
   console.log(historyData)
   return (
-    historyLoading ?
-      <h1>"Loading..."</h1> :
-      <h1>Chart</h1>
+    <div>
+      {historyLoading ?
+        "Loading..." :
+        <ApexChart
+          options={
+            {
+              chart: {
+                id: "test"
+              }
+            }
+          }
+          series={[{
+            data: historyData?.map(datum => datum.close
+            )
+          }]}
+        />
+      }
+    </div>
   )
 }
 

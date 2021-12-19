@@ -14,7 +14,7 @@ export async function fetchPriceData(coinId?: string) {
 }
 
 export async function fetchHistory(coinId?: string) {
-  const start = Math.ceil(Date.now() / 1000) - 60 * 60 * 24 * 7;
+  const start = Math.ceil(Date.now() / 1000) - 60 * 60 * 24 * 6;
   const end = Math.floor(Date.now() / 1000);
 
   return fetch(`${BASE_URL}/coins/${coinId}/ohlcv/historical?start=${start}&end=${end}`).then(data => data.json());
