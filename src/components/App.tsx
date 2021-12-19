@@ -43,6 +43,9 @@ const GlobalStyle = createGlobalStyle`
   a{
     text-decoration:none;
   }
+.apexcharts-tooltip{
+  color:black;
+}
 `;
 
 export default function App() {
