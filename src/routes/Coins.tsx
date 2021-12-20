@@ -3,7 +3,7 @@ import { useQuery } from "react-query";
 import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
 import { fetchCoins } from "./api";
-
+import Helmet from 'react-helmet';
 
 const Title = styled.h1`
   colors:${(props) => props.theme.accentColor}
@@ -107,6 +107,11 @@ export default function Coins() {
   const { isLoading, data } = useQuery<CoinInterface[]>("allCoins", fetchCoins)
   return (
     <Container>
+      <Helmet>
+        <title>
+          코인
+        </title>
+      </Helmet>
       <Header>
         <Title>코인</Title>
       </Header>
