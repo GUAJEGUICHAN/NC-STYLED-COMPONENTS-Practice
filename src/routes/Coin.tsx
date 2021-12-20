@@ -1,9 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 
-import { Link, Outlet, useLocation, useParams, useMatch } from "react-router-dom";
+import { Link, Outlet, useLocation, useParams, useMatch, useNavigate } from "react-router-dom";
 import { useQuery } from "react-query";
 import { fetchInfoData, fetchPriceData } from "./api";
+import { Helmet } from "react-helmet";
 const Title = styled.h1`
   colors:${(props) => props.theme.accentColor}
 `;
@@ -80,6 +81,10 @@ const Tab = styled.span<{ isActive: boolean }>`
   }
 `;
 
+const GoBack = styled.div`
+  cursor:pointer;
+`
+
 type RouteParams = {
   coinId: string;
 }
@@ -153,55 +158,73 @@ export default function Coin() {
   const { state } = useLocation() as RouterState;
   const priceMatch = useMatch("/:coinId/price");
   const chartMatch = useMatch("/:coinId/chart");
-  const { isLoading: infoLoading, data: infoData } = useQuery<InfoData>([coinId, "infoData"], () => fetchInfoData(coinId));
-  const { isLoading: priceLoading, data: priceData } = useQuery<PriceData>([coinId, "priceData"], () => fetchPriceData(coinId));
+  const navigate = useNavigate();
+
+  const { isLoading: infoLoading, data: infoData }
+    = useQuery<InfoData>(
+      [coinId, "infoData"],
+      () => fetchInfoData(coinId));
+  const { isLoading: priceLoading, data: priceData }
+    = useQuery<PriceData>(
+      [coinId, "priceData"],
+      () => fetchPriceData(coinId),
+      {
+        refetchInterval: 1000
+      });
 
   return (
     <Container>
+      <Helmet>
+        <title>
+          {state?.name || (infoData?.name || "Loading...")}
+        </title>
+      </Helmet>
+      <GoBack onClick={() => navigate(-1)}>⬅️</GoBack>
       <Header>
         <Title>{state?.name || (infoData?.name || "Loading...")} </Title>
       </Header>
-      {infoLoading ?
-        <Loader>"Loading..."</Loader> :
-        <>
-          <Overview>
-            <OverviewItems>
-              <span>RANK:</span>
-              <span>{infoData?.rank}</span>
-            </OverviewItems>
-            <OverviewItems>
-              <span>SYMBOL:</span>
-              <span>{priceData?.symbol}</span>
-            </OverviewItems>
-            <OverviewItems>
-              <span>OPEN SOURCE</span>
-              <span>{infoData?.open_source ? "YES" : "NO"}</span>
-            </OverviewItems>
-          </Overview>
+      {
+        infoLoading ?
+          <Loader>"Loading..."</Loader> :
+          <>
+            <Overview>
+              <OverviewItems>
+                <span>RANK:</span>
+                <span>{infoData?.rank}</span>
+              </OverviewItems>
+              <OverviewItems>
+                <span>SYMBOL:</span>
+                <span>{priceData?.symbol}</span>
+              </OverviewItems>
+              <OverviewItems>
+                <span>PRICE</span>
+                <span>{`$${priceData?.quotes.USD.price.toFixed(12)}`}</span>
+              </OverviewItems>
+            </Overview>
 
-          <Describe>
-            <span>{infoData?.description}</span>
-          </Describe>
+            <Describe>
+              <span>{infoData?.description}</span>
+            </Describe>
 
-          <Overview>
-            <OverviewItems>
-              <span>TOTAL SUPPlY:</span>
-              <span>{priceData?.total_supply}</span>
-            </OverviewItems>
-            <OverviewItems>
-              <span>MAX SUPPLY:</span>
-              <span>{priceData?.max_supply}</span>
-            </OverviewItems>
-          </Overview>
-          <Tabs>
-            <Tab isActive={chartMatch !== null}>
-              <Link to={`/${coinId}/chart`}>Chart</Link>
-            </Tab>
-            <Tab isActive={priceMatch !== null}>
-              <Link to={`/${coinId}/price`}>Price</Link>
-            </Tab>
-          </Tabs>
-        </>
+            <Overview>
+              <OverviewItems>
+                <span>TOTAL SUPPlY:</span>
+                <span>{priceData?.total_supply}</span>
+              </OverviewItems>
+              <OverviewItems>
+                <span>MAX SUPPLY:</span>
+                <span>{priceData?.max_supply}</span>
+              </OverviewItems>
+            </Overview>
+            <Tabs>
+              <Tab isActive={chartMatch !== null}>
+                <Link to={`/${coinId}/chart`}>Chart</Link>
+              </Tab>
+              <Tab isActive={priceMatch !== null}>
+                <Link to={`/${coinId}/price`}>Price</Link>
+              </Tab>
+            </Tabs>
+          </>
       }
       <Outlet context={{ coinId }} />
     </Container >
