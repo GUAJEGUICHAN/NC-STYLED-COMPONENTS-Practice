@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
 import Router from '../Router';
-import { lightTheme } from '../theme';
+import { lightTheme, darkTheme } from '../theme';
 
 const GlobalStyle = createGlobalStyle`
 <style>
@@ -49,8 +49,14 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 export default function App() {
+  const [dark, setDark] = useState(true);
+  const toggleDark = () => {
+    setDark(!dark);
+    // console.log("안녕")
+  };
   return (
-    <ThemeProvider theme={lightTheme}>
+    <ThemeProvider theme={dark ? darkTheme : lightTheme}>
+      <button onClick={toggleDark}>Night or Day</button>
       <GlobalStyle />
       <Router />
     </ThemeProvider>

@@ -26,9 +26,10 @@ const CoinsList = styled.ul`
 `;
 
 const Coin = styled.li`
-    background:white;
+    // background:blue;
+    background:${(props) => props.theme.cardBgColor};
     margin-bottom:10px;
-    color:${(props) => props.theme.bgColor};
+    color:${(props) => props.theme.textColor};
     border-radius:20px;
     a{
       display:flex;
@@ -115,6 +116,7 @@ export default function Coins() {
       <Header>
         <Title>코인</Title>
       </Header>
+
       {isLoading ?
         <Loader>"Loading..."</Loader> :
         <CoinsList>

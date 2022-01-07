@@ -18,6 +18,7 @@ const Container = styled.div`
 const Header = styled.header`
   height:10vh;
   display:flex;
+color:${props => props.theme.textColor};
   justify-content:center;
   align-items:center;
 `;
@@ -29,7 +30,7 @@ const Loader = styled.span`
 
 
 const Overview = styled.div`
-  background: #252732;
+  background: ${props => props.theme.cardBgColor};
   display:flex;
   height:40px;
   padding:20px;
@@ -51,6 +52,7 @@ const OverviewItems = styled.div`
 `;
 const Describe = styled.div`
   background:"";
+color:${(props) => props.theme.textColor}
   padding: 10px;
 `;
 
@@ -62,7 +64,7 @@ const Tabs = styled.div`
 const Tab = styled.span<{ isActive: boolean }>`
   font-size:20px;
   height:40px;
-  background:#252732;
+  background:${props => props.theme.cardBgColor};
   border-radius:15px;
   color:${props => props.isActive ? props.theme.accentColor : props.theme.textColor};
   a{
