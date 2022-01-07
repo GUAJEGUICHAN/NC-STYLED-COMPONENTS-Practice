@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
-import styled, { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
 import Router from '../Router';
-import Circle from './Circle';
+import { lightTheme } from '../theme';
 
 const GlobalStyle = createGlobalStyle`
 <style>
@@ -50,10 +50,10 @@ const GlobalStyle = createGlobalStyle`
 
 export default function App() {
   return (
-    <>
+    <ThemeProvider theme={lightTheme}>
       <GlobalStyle />
       <Router />
-    </>
+    </ThemeProvider>
 
   );
 }
