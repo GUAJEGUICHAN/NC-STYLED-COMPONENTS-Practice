@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 
 import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
 import Router from '../Router';
 import { lightTheme, darkTheme } from '../theme';
+
+import { isDarkAtom } from '../atom';
 
 const GlobalStyle = createGlobalStyle`
 <style>
@@ -49,13 +52,13 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 export default function App() {
-  const [dark, setDark] = useState(true);
+  const isDark = useRecoilValue(isDarkAtom);
+  const setterFn = useSetRecoilState(isDarkAtom);
   const toggleDark = () => {
-    setDark(!dark);
-    // console.log("안녕")
+    setterFn((prev) => !prev);
   };
   return (
-    <ThemeProvider theme={dark ? darkTheme : lightTheme}>
+    <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
       <button onClick={toggleDark}>Night or Day</button>
       <GlobalStyle />
       <Router />
